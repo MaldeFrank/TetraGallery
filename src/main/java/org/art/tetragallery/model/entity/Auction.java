@@ -14,8 +14,7 @@ import java.util.List;
 @Setter
 @ToString(exclude = {"bids"})
 @EqualsAndHashCode(exclude = {"bids"})
-
-public class Auktion {
+public class Auction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

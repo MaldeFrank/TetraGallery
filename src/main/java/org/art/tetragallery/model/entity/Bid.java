@@ -14,7 +14,7 @@ public class Bid {
     @ManyToOne
     private Customer customer;
     @ManyToOne
-    private Auktion auktion;
+    private Auction auction;
     private double amount;
     private Timestamp timestamp;
 }

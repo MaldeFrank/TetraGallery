@@ -1,13 +1,12 @@
 package org.art.tetragallery.controller;
 
-import org.art.tetragallery.model.entity.Customer;
+import org.art.tetragallery.model.dto.Customer.CustomerDtoGet;
+import org.art.tetragallery.model.dto.Customer.CustomerDtoPost;
 import org.art.tetragallery.services.CustomerService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.net.URI;
 
 @RestController
 @RequestMapping("/api/customer")
@@ -18,13 +17,12 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/all")
-    public List<Customer> getCustomers(){
-        return customerService.getCustomers();
-    }
+    @PostMapping("/create")
+    public ResponseEntity<CustomerDtoGet> createCustomer(@RequestBody CustomerDtoPost dto) {
+        CustomerDtoGet createdCustomer = customerService.createCustomer(dto);
 
-    @GetMapping("/{id}")
-    public Customer getCustomers(@PathVariable long id){
-        return customerService.getCustomerById(id);
+        return ResponseEntity
+                .created(URI.create("/api/customer/" + createdCustomer.getCustomerId()))
+                .body(createdCustomer);
     }
 }

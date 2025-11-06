@@ -7,15 +7,20 @@ import java.sql.Timestamp;
 
 @Entity
 @Data
+@Table(name = "sale")
 public class Sale {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "sale_id")
     private long id;
     @OneToOne
+    @JoinColumn(name = "product_id_fk")
     private Product product;
     @ManyToOne
+    @JoinColumn(name = "customer_id_fk")
     private Customer customer;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "artist_id_fk")
     private Artist seller;
     private Timestamp date;
 }

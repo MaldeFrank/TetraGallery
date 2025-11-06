@@ -9,6 +9,7 @@ import lombok.Data;
 public class User {
     @Id
     @GeneratedValue
+    @Column(name = "user_id")
     private Long id;
     private String name;
     private String email;

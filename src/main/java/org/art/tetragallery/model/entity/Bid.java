@@ -1,7 +1,9 @@
 package org.art.tetragallery.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
@@ -11,6 +13,8 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @Table(name = "bid")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Bid {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,10 +1,8 @@
 package org.art.tetragallery.repository;
 
+import org.art.tetragallery.model.entity.Artist;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ArtRepository {
-    public void save(){
-        //TODO
-    }
+public interface ArtistRep extends BaseRep<Artist,Long> {
 }

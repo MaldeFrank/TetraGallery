@@ -2,6 +2,7 @@ package org.art.tetragallery.controller;
 
 import org.art.tetragallery.model.dto.Customer.CustomerDtoGet;
 import org.art.tetragallery.model.dto.Customer.CustomerDtoPost;
+import org.art.tetragallery.model.entity.Customer;
 import org.art.tetragallery.services.CustomerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,5 +25,11 @@ public class CustomerController {
         return ResponseEntity
                 .created(URI.create("/api/customer/" + createdCustomer.getCustomerId()))
                 .body(createdCustomer);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerDtoGet> fetchCustomer(@PathVariable Long id) {
+        CustomerDtoGet customer = customerService.fetchCustomer(id);
+        return ResponseEntity.created(URI.create("/api/customer/"+id)).body(customer);
     }
 }

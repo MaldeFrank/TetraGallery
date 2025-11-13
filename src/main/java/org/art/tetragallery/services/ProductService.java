@@ -6,10 +6,12 @@ import org.art.tetragallery.model.dto.Product.ProductDtoGet;
 import org.art.tetragallery.model.entity.Artist;
 import org.art.tetragallery.model.entity.Product;
 import org.art.tetragallery.repository.ArtRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Arrays;
 
+@Service
 public class ProductService {
     private int nextId = 1;
     private final ArtRepository artRepository;

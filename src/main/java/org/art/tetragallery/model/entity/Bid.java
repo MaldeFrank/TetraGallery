@@ -1,13 +1,15 @@
 package org.art.tetragallery.model.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "bid")
 public class Bid {
     @Id

@@ -2,6 +2,7 @@ package org.art.tetragallery.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -20,6 +21,7 @@ public class Auction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "auction_id")
     private long id;
+    @CreationTimestamp
     private Timestamp timestamp;
     @ManyToOne
     @JoinColumn(name = "artist_seller_id_fk")

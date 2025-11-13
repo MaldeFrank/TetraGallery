@@ -1,10 +1,7 @@
 package org.art.tetragallery.model.entity;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -16,6 +13,8 @@ import java.util.List;
 @ToString(exclude = {"bids"})
 @EqualsAndHashCode(exclude = {"bids"})
 @Table(name = "auction")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Auction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

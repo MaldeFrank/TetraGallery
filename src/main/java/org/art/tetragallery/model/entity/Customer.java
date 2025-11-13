@@ -1,7 +1,9 @@
 package org.art.tetragallery.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -11,6 +13,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "customer")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

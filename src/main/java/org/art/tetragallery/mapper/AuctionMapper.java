@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AuctionMapper {
-    private ProductMapper productMapper;
-    private ArtistMapper artistMapper;
+    private final ProductMapper productMapper;
+    private final ArtistMapper artistMapper;
 
     public AuctionMapper(ProductMapper productMapper, ArtistMapper artistMapper) {
         this.productMapper = productMapper;

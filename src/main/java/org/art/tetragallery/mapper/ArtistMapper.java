@@ -9,7 +9,7 @@ import java.util.List;
 
 @Component
 public class ArtistMapper {
-    private ProductMapper productMapper;
+    private final ProductMapper productMapper;
 
     public ArtistMapper(ProductMapper productMapper) {
         this.productMapper = productMapper;

@@ -3,14 +3,9 @@ package org.art.tetragallery.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.art.tetragallery.model.dto.Auction.AuctionDtoPost;
 import org.art.tetragallery.model.dto.Auction.AuctionUpdateDto;
-import org.art.tetragallery.model.entity.Artist;
-import org.art.tetragallery.model.entity.Auction;
-import org.art.tetragallery.model.entity.Product;
-import org.art.tetragallery.model.entity.User;
-import org.art.tetragallery.repository.ArtistRep;
-import org.art.tetragallery.repository.AuctionRep;
-import org.art.tetragallery.repository.ProductRep;
-import org.art.tetragallery.repository.UserRep;
+import org.art.tetragallery.model.dto.Bid.BidDtoGet;
+import org.art.tetragallery.model.entity.*;
+import org.art.tetragallery.repository.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,10 +18,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
@@ -45,10 +38,13 @@ class AuctionControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
     private User user;
+    private User user2;
     private Artist artist;
     private Product product;
     private Product product2;
     private Auction auction;
+    @Autowired
+    private CustomerRep customerRep;
 
     @BeforeEach
     void beforeEach() throws Exception {
@@ -56,6 +52,12 @@ class AuctionControllerTest {
         user.setName("Rand");
         user.setEmail("Rand@email");
         user = userRep.save(user);
+
+        user2 = new User();
+        user2.setName("Mand");
+        user2.setEmail("Mand@email");
+        user2 = userRep.save(user);
+
 
         artist = new Artist();
         artist.setUser(user);
@@ -83,6 +85,7 @@ class AuctionControllerTest {
         auctionRep.deleteAll();
         productRep.deleteAll();
         artistRep.deleteAll();
+        customerRep.deleteAll();
         userRep.deleteAll();
     }
 

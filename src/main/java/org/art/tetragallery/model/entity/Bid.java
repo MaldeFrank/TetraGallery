@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -27,5 +28,6 @@ public class Bid {
     @JoinColumn(name = "auction_id_fk")
     private Auction auction;
     private BigDecimal amount;
+    @CreationTimestamp
     private Timestamp timestamp;
 }

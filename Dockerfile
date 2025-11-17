@@ -8,4 +8,4 @@ RUN mvn clean package
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/TetraGallery-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=prod", "target/TetraGallery-0.0.1-SNAPSHOT.jar"]

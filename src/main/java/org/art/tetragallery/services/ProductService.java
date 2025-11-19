@@ -49,15 +49,9 @@ public class ProductService {
         }
         product.setTags(tags);
         product = productRep.save(product);
-        Auction auction = new Auction();
-        auction.setProduct(product);
-        auction.setSeller(artist);
-        auction.setSecretPrice(dto.getSecretAmount());
-        auction.setBids(List.of());
-        auctionRep.save(auction);
 
         ArtDtoGet response = new ArtDtoGet();
-        response.setArtId(auction.getId());
+        response.setArtId(product.getId());
         response.setTitle(dto.getTitle()); //Not in use for some reason? Check Entity classes TODO
         response.setArtist(artist);
         response.setImageUrl(dto.getImageUrl()); //Dont remember what we said to do here.

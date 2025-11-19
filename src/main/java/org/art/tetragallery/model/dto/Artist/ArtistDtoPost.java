@@ -6,4 +6,5 @@ import lombok.Data;
 public class ArtistDtoPost {
     private String name;
     private String email;
+    private String password;
 }

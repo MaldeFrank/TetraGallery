@@ -7,6 +7,8 @@ import org.art.tetragallery.model.dto.Customer.CustomerDtoPost;
 import org.art.tetragallery.services.CustomerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.net.URI;
 import java.util.List;
@@ -45,5 +47,11 @@ public class CustomerController {
     public ResponseEntity<List<BidDtoGet>> fetchBid(@PathVariable Long id) {
         List<BidDtoGet> bids = customerService.fetchCustomerBids(id);
         return ResponseEntity.ok(bids);
+    }
+
+    @DeleteMapping("/{customerId}")
+    public ResponseEntity<Void> deleteCustomer(@PathVariable Long customerId) {
+        customerService.deleteCustomer(customerId);
+        return ResponseEntity.noContent().build(); // 204 No Content
     }
 }

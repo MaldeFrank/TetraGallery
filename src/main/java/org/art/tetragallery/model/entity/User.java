@@ -20,5 +20,25 @@ public class User {
     @Column(unique = true)
     private String name;
     @Column(unique = true)
+    private String password;
+    @Column(unique = true)
     private String email;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

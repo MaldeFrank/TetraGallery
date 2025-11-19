@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
+import org.art.tetragallery.model.entity.Role;
 
 import java.util.List;
 
@@ -45,6 +46,8 @@ public class CustomerService {
         User user = new User();
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
+        user.setPassword(dto.getPassword());
+        user.setRole(Role.COSTUMER);
 
         User savedUser = userRep.save(user);
 
@@ -78,5 +81,16 @@ public class CustomerService {
         return bidMapper.toDto(persisted);
     }
 
+    public void deleteCustomer(Long customerId) {
+        Customer customer = customerRep.findById(customerId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
 
+        User user = customer.getUser();
+
+        customerRep.delete(customer);
+
+        if (user != null && user.getId() != null) {
+            userRep.deleteById(user.getId());
+        }
+    }
 }

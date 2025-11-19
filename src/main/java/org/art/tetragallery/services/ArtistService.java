@@ -5,6 +5,7 @@ import org.art.tetragallery.model.dto.Artist.ArtistDtoGet;
 import org.art.tetragallery.model.dto.Artist.ArtistDtoPost;
 import org.art.tetragallery.model.dto.Product.ProductDtoGet;
 import org.art.tetragallery.model.entity.Artist;
+import org.art.tetragallery.model.entity.Role;
 import org.art.tetragallery.model.entity.User;
 import org.art.tetragallery.repository.ArtistRep;
 import org.art.tetragallery.repository.UserRep;
@@ -30,6 +31,8 @@ public class ArtistService {
         User user = new User();
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
+        user.setPassword(dto.getPassword());
+        user.setRole(Role.ARTIST);
         User savedUser = userRep.save(user);
 
         Artist artist = new Artist();

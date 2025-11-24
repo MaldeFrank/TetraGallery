@@ -9,21 +9,21 @@ import org.springframework.lang.NonNull;
 @Configuration
 public class WebConfig {
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(@NonNull CorsRegistry registry) {
-                registry.addMapping("/api/**")
-                        .allowedOrigins(
-                                "http://localhost:5173"   // Vite dev
-                                // ,"https://our-frontend.com" // later
-                        )
-                        .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
-                        .allowedHeaders("*");
-                        // If we ever send cookies from backend:
-                        // .allowCredentials(true);
-            }
-        };
-    }
+        @Bean
+        public WebMvcConfigurer corsConfigurer() {
+            return new WebMvcConfigurer() {
+                @Override
+                public void addCorsMappings(@NonNull CorsRegistry registry) {
+                    registry.addMapping("/**")
+                            .allowedOrigins(
+                                    "http://localhost:5173",// Vite dev
+                                    "http://localhost:8080",
+                                    "http://localhost"
+                                    // ,"https://our-frontend.com" // later
+                            )
+                            .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
+                            .allowedHeaders("*");
+                }
+            };
+        }
 }

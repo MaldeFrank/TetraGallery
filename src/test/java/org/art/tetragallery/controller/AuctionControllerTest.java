@@ -3,7 +3,6 @@ package org.art.tetragallery.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.art.tetragallery.model.dto.Auction.AuctionDtoPost;
 import org.art.tetragallery.model.dto.Auction.AuctionUpdateDto;
-import org.art.tetragallery.model.dto.Bid.BidDtoGet;
 import org.art.tetragallery.model.entity.*;
 import org.art.tetragallery.repository.*;
 import org.junit.jupiter.api.AfterEach;

@@ -40,7 +40,7 @@ public class CustomerController {
     @GetMapping("/{id}")
     public ResponseEntity<CustomerDtoGet> fetchCustomer(@PathVariable Long id) {
         CustomerDtoGet customer = customerService.fetchCustomer(id);
-        return ResponseEntity.created(URI.create("/api/customer/"+id)).body(customer);
+        return ResponseEntity.ok(customer);
     }
 
     @GetMapping("/bids/{id}")

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Profile;
 
 @Profile("prod")
 @Configuration
-public class SecurityConfig {
+public class APISecurityConfig {
 
     @Value("${app.api-key}")
     private String apiKey;
